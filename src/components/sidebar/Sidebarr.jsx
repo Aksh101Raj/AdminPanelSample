@@ -1,42 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { FaBars, FaHome } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
 import { IoLogOut } from "react-icons/io5";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./side.css";
 const routes = [
   {
-    path: "/",
+    path: "/admin",
     name: "Dashboard",
     icon: <FaHome />,
   },
 
-  {
-    path: "/login",
-    name: "Logout",
-    icon: <IoLogOut />,
-  },
+  // {
+  //   path: "/login",
+  //   name: "Logout",
+  //   icon: <IoLogOut />,
+  // },
 ];
 
 const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      transition: {
-        duration: 0.001,
-      },
-    },
-    show: {
-      width: "140px",
-      padding: "5px 15px",
-      transition: {
-        duration: 0.001,
-      },
-    },
+
+  const logout = () => {
+    localStorage.removeItem("user");
   };
 
   const showAnimation = {
@@ -85,7 +72,7 @@ const SideBar = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <div className="search">
+          {/* <div className="search">
             <div className="search_icon">
               <BiSearch />
             </div>
@@ -101,11 +88,12 @@ const SideBar = ({ children }) => {
                 />
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
           <section className="routes">
             {routes.map((route, index) => {
               return (
                 <NavLink
+                  onClick={() => console.log("hi")}
                   to={route.path}
                   key={index}
                   className="link"
@@ -128,6 +116,27 @@ const SideBar = ({ children }) => {
                 </NavLink>
               );
             })}
+            <NavLink
+              onClick={() => logout()}
+              to={"/login"}
+              className="link"
+              activeClassName="active"
+            >
+              <div className="icon">{<IoLogOut />}</div>
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    variants={showAnimation}
+                    initial="hidden"
+                    animate="show"
+                    exit="hidden"
+                    className="link_text"
+                  >
+                    {"Logout"}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </NavLink>
           </section>
         </motion.div>
 
