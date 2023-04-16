@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome } from "react-icons/fa";
+import { FaBars, FaHome, FaListAlt } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,11 +11,11 @@ const routes = [
     icon: <FaHome />,
   },
 
-  // {
-  //   path: "/login",
-  //   name: "Logout",
-  //   icon: <IoLogOut />,
-  // },
+  {
+    path: "/",
+    name: "List",
+    icon: <FaListAlt />,
+  },
 ];
 
 const SideBar = ({ children }) => {
@@ -132,7 +132,7 @@ const SideBar = ({ children }) => {
                     exit="hidden"
                     className="link_text"
                   >
-                    {"Logout"}
+                    {localStorage.getItem("login") ? "Logout" : "Login"}
                   </motion.div>
                 )}
               </AnimatePresence>
