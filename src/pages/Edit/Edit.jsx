@@ -292,7 +292,7 @@ function New({ closeEvent, fid }) {
             size="small"
             sx={{ minWidth: "100%" }}
           >
-            <MenuItem value="Manjalpur">Manjalpur</MenuItem>
+            <MenuItem value="GIDC Colony">GIDC Colony</MenuItem>
             <MenuItem value="Bhavani Nagar">Bhavani Nagar</MenuItem>
             <MenuItem value="Darbar Chokadi">Darbar Chokadi</MenuItem>
             <MenuItem value="Vadsar-Kalali-Atladra">
