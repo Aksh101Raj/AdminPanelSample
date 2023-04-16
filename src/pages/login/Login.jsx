@@ -29,6 +29,7 @@ const Login = () => {
     let login = localStorage.getItem("login");
     if (login) {
       navigate("/admin");
+      // afasd
     }
   });
 
