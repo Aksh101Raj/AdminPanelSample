@@ -16,33 +16,21 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("test");
-    // localStorage.removeItem("user");
-  }, []);
-
-  // const { dispatch } = useContext(AuthContext);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
     if (name === username && password === pass) {
       // dispatch({ type: "LOGIN", payload: username });
-      localStorage.setItem("user", name);
-      navigate("/");
+      localStorage.setItem("login", true);
     } else {
       setError(true);
     }
-    // signInWithnameAndPassword(auth, name, password)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     dispatch({ type: "LOGIN", payload: user });
-    //     navitage("/");
-    //   })
-    //   .catch((error) => {
-    //     setError(true);
-    //   });
   };
+
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (login) {
+      navigate("/admin");
+    }
+  });
 
   return (
     <div className="back">

@@ -23,7 +23,7 @@ const SideBar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("login");
   };
 
   const showAnimation = {

@@ -1,18 +1,19 @@
 import Table from "./components/data/list";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Protected from "./components/Protected";
 import "./App.css";
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { AuthContext } from "./context/AuthContext";
+// import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
 
-  const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />;
-  };
+  // const RequireAuth = ({ children }) => {
+  //   return currentUser ? children : <Navigate to="/login" />;
+  // };
   return (
     <div>
       <div className="body">
@@ -24,11 +25,7 @@ function App() {
 
               <Route
                 path="admin"
-                element={
-                  <RequireAuth>
-                    <List />
-                  </RequireAuth>
-                }
+                element={<Protected Component={List} />}
               ></Route>
             </Route>
           </Routes>
